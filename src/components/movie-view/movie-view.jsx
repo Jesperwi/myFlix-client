@@ -1,4 +1,6 @@
 import React from 'react';
+import Button from 'react-bootstrap/Button';
+import './movie-view.scss';
 
 export class MovieView extends React.Component {
 
@@ -9,7 +11,7 @@ export class MovieView extends React.Component {
   }
 
   render() {
-    const { movie } = this.props;
+    const { movie, onClick } = this.props;
 
     if (!movie) return null;
 
@@ -32,13 +34,12 @@ export class MovieView extends React.Component {
         <div className="movie-director">
           <span className="label">Director: </span>
           <span className="value">{movie.Director.Name}</span>
-        </div>
+        </div> 
         <a href="http://localhost:1234/">
-        <button>Back</button>
+          <Button variant="link" variant="danger">Back</Button> 
         </a>
-       </div>
-
-
+        
+        </div>
     );
   }
 }

@@ -1,0 +1,41 @@
+* {
+    box-sizing: border-box;
+    background-color: black;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.movie-view {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    width: 150%;
+    text-align: left;
+    justify-content: space-around;
+}
+
+.movie-poster {
+display: flex;
+padding: 0 1em;
+margin-top: 6em;
+}
+
+.movie-title {
+    padding: 5px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.movie-description {
+    padding: 5px;
+}
+
+.movie-genre {
+    padding: 5px;
+}
+
+.movie-director {
+    padding: 5px;
+    margin-bottom: 1em;
+}
+
+
