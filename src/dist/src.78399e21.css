@@ -79,9 +79,8 @@ form {
 
 * {
   box-sizing: border-box;
-  background-color: white;
-  font-family: 'Montserrat', sans-serif;
-  color: black; }
+  background-color: #353535;
+  font-family: 'Montserrat', sans-serif; }
 
 .movie-view {
   display: flex;
