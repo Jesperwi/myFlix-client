@@ -1,0 +1,35 @@
+*{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    border-bottom: rgb(126, 123, 123) 1px solid;
+    justify-content: space-between;
+    padding: 0 4em;
+}
+
+.movie-header {
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 0.5em;
+    text-shadow: rgb(56, 55, 55) 2px 2px 1px;
+    font-size: 50px;
+}
+
+.profilebutton {
+    margin-top: 2em;
+}
+
+.container-movies {
+    width: 100%;
+}
+
+a:link, a:visited {
+    color:red;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+  }

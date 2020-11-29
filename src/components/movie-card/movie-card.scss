@@ -1,0 +1,42 @@
+* {
+    box-sizing: border-box;
+    background-color: black;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+.app-container {
+    display:flex;
+    width: 100%;
+    height: auto;
+}
+
+.main-view {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 0fr 0fr 0fr;
+    justify-content: center;
+}    
+
+.card {
+    margin: 1em;
+}
+
+.card-body {
+    background-color: white;
+}
+
+.card-title {
+    background-color: white;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.card-text {
+    background-color: white;
+    color: black;
+}
+
+.danger2 {
+    margin: 5px;
+    display: flex;
+}
