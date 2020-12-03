@@ -1,4 +1,5 @@
 import React from 'react';
+import{ Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import './genre-view.scss';
 
@@ -26,9 +27,9 @@ export class GenreView extends React.Component {
           <span className="label">Description: </span>
           <span className="value">{Genre.Genre.Description}</span>
         </div>
-        <a href="http://localhost:1234/">
+        <Link to={'/movies'}>
           <Button variant="link" variant="danger">Back</Button> 
-        </a>        
+        </Link>       
         </div>
     );
   }

@@ -1,4 +1,5 @@
 import React from 'react';
+import{ Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import './movie-view.scss';
 
@@ -35,9 +36,9 @@ export class MovieView extends React.Component {
           <span className="label">Director: </span>
           <span className="value">{movie.Director.Name}</span>
         </div> 
-        <a href="http://localhost:1234/">
+        <Link to={'/movies'}>
           <Button variant="link" variant="danger">Back</Button> 
-        </a>
+        </Link>   
         
         </div>
     );

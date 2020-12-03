@@ -1,102 +1,94 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Fragment } from 'react';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import 'regenerator-runtime/runtime'
 import './profile-view.scss';
-import { BrowserRouter as Router, Route, useParams} from "react-router-dom";
-import{ Link } from "react-router-dom";
 import { Form } from 'react-bootstrap';
 
 const ProfileView = ({ user, token, props }) =>  {   
+  console.log('token', token);
 
-const [userInfo, setUserInfo] = useState({});
-const [ username, setUsername ] = useState('');
-const [ password, setPassword ] = useState('');
-const [ email, setEmail ] = useState('');
-const [ birthday, setBirthday ] = useState('');
+const [currentUser, setCurrentUser] = useState({
+  username: '',
+  password: '',
+  email: '',
+  birthday: '',
+  favouriteMovies: []
+});
 
 useEffect(() => {
-  let accessToken = localStorage.getItem('token');
-  console.log('accessToken', accessToken )
+  const accessToken = localStorage.getItem('token');
     const fetchData = async () => {
       const result = await axios(
         `http://myflixjw.herokuapp.com/users/${user}`,{
         headers: { Authorization: `Bearer ${accessToken}`}
         });
-        setUserInfo(result.data); 
+        const { Birthday, Email, Password, Username, FavoriteMovies } = result.data;
+        console.log('aa', FavoriteMovies)
+        setCurrentUser({
+          username: Username,
+          password: Password,
+          email: Email,
+          birthday: Birthday,
+          favouriteMovies: FavoriteMovies
+        }); 
       };
     fetchData();
-    }, []);
+    }, [user]);
      
 const handleSubmit = (e) => {
   e.preventDefault();
-  axios.put(`http://myflixjw.herokuapp.com/users/${user}`, { 
-    Username: [''],
-    Password: [''],
-    Email: [''],
-    Birthday: ['']
+  const { username, password, email, birthday } = currentUser;
+  axios.put(`http://myflixjw.herokuapp.com/users/${user}`, {
+    Username: username,
+    Password: password,
+    Email: email,
+    Birthday: birthday
   })
-  .then(response => {
-    const user = response.user;
-    })
-.catch(e => {
-  console.log('no such user')
-});
+  .then(response => console.log('res', response))
+  .catch(e => {
+    console.log('no such user', e)
+  });
 };
 
-console.log('userInfo', userInfo)
-const { Username, Password, Email, Birthday, FavoriteMovie } = userInfo;
+const handleChange = (e) => {
+  setCurrentUser(prev => ({
+    ...prev,
+    [e.target.name]: e.target.value 
+  }));
+}
 
-    return (
-  <Form className="profile-info">
-  <div className="profile-user">
-  <span className="label">Username: </span>
-  <span className="value">{Username}</span>
-  </div>
-  <div className="profile-pass">
-    <span className="label">Password: </span>
-    <span className="value">{Password}</span>
-  </div>
-  <div className="profile-email">
-    <span className="label">Email: </span>
-    <span className="value">{Email}</span>
-  </div>
-  <div className="profile-birthday">
-    <span className="label">Birthday: </span>
-    <span className="value">{Birthday}</span>
-  </div>
-  <div className="fav-movies">
-    <span className="label">Favorite Movies: </span>
-    <span className="value">{FavoriteMovie}</span>
-  </div>
+const { username, password, email, birthday, favouriteMovies } = currentUser;
+console.log(favouriteMovies);
+return (
+  <Fragment>
+    <Form className="profile-info" onSubmit={handleSubmit}>
+      <Form.Group controlId="formBasicUsername">
+        <Form.Label>Username:</Form.Label>
+        <Form.Control type="text" name="username" value={username} onChange={handleChange} />
+      </Form.Group>
 
-  <Form.Group controlId="formBasicUsername">
-    <Form.Label>Username:</Form.Label>
-    <Form.Control type="text" value={username} onChange={e => setUsername(e.target.value)} />
-  </Form.Group>
+      <Form.Group controlId="formBasicPassword">
+        <Form.Label>Password:</Form.Label>
+        <Form.Control type="password" name="password" value={password} onChange={handleChange} />
+      </Form.Group>
 
-  <Form.Group controlId="formBasicPassword">
-    <Form.Label>Password:</Form.Label>
-    <Form.Control type="password" value={password} onChange={e => setPassword(e.target.value)} />
-  </Form.Group>
+      <Form.Group controlId="formBasicEmail">
+        <Form.Label>Email:</Form.Label>
+        <Form.Control type="email" name="email" value={email} onChange={handleChange} />
+      </Form.Group>
 
-  <Form.Group controlId="formBasicEmail">
-    <Form.Label>Email:</Form.Label>
-    <Form.Control type="email" value={email} onChange={e => setEmail(e.target.value)} />
-  </Form.Group>
+      <Form.Group controlId="formBasicBirthday">
+        <Form.Label>Birthday:</Form.Label>
+        <Form.Control type="birthday" name="birthday" value={birthday} onChange={handleChange} />
+      </Form.Group>
 
-  <Form.Group controlId="formBasicBirthday">
-    <Form.Label>Birthday:</Form.Label>
-    <Form.Control type="birthday" value={birthday} onChange={e => setBirthday(e.target.value)} />
-  </Form.Group>
-
-   <Button variant="danger" type="submit" onClick={handleSubmit}>
-    Update information
-  </Button>
-
-
-</Form>
-)
+      <Button variant="danger" type="submit">
+        Update information
+      </Button>
+    </Form>
+  </Fragment>
+  )
 };
 
 
