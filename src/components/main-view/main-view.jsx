@@ -3,14 +3,16 @@ import axios from 'axios';
 import Button from 'react-bootstrap/Button'
 import { BrowserRouter as Router, Route, useParams} from "react-router-dom";
 import{ Link } from "react-router-dom";
+import { connect } from 'react-redux';
 
+import { setMovies } from '../../actions/actions';
 import { GenreView } from '../genre-view/genre-view';
 import ProfileView from '../profile-view/profile-view';
 import { DirectorView } from '../director-view/director-view';
 import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
-import { RegistrationView } from '../registration-view/registration-view';
+// import { RegistrationView } from '../registration-view/registration-view';
 import './main-view.scss';
 
 export class MainView extends React.Component {
@@ -29,10 +31,8 @@ export class MainView extends React.Component {
       })
       .then(response => {
         // Assign the result to the state
-        this.setState({
-          movies: response.data
-        });
-      })
+        this.props.setMovies(response.data);
+        })
       .catch(function (error) {
         console.log(error);
       });
@@ -59,8 +59,9 @@ logout(authData) {
 }
 
 render() {
-  const { movies, user } = this.state;
-  console.log('mainview', user)
+  let{ movies } = this.props;
+  let { user } = this.state;
+  
   
   if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
 
@@ -68,10 +69,10 @@ render() {
   
   return (
     <div className="container-movies">
-      <button onClick={() => this.logout(user)}>Logout</button>
       <Router>
         <nav className="navbar">
         <Link to={`/`} className="movie-header">myFlix</Link>
+        <button onClick={() => this.logout(user)}>Logout</button>
         <Link to={`/users/${user}`}>
         <Button className="profilebutton" variant="link" variant="light">Profile</Button>
         </Link>
@@ -88,8 +89,7 @@ render() {
       <Route exact path="/directors/:name" render={({ match }) => {
         if (!movies) return <div className="main-view"/>;
           return <DirectorView Director={movies.find(m => m.Director.Name === match.params.name)}/>}
-        }
-      />
+        }/>
       <Route exact path="/genres/:name" render={({ match }) => {
       if (!movies) return <div className="main-view"/>;
       return <GenreView Genre={movies.find(m => m.Genre.Name === match.params.name)}/>}}/>
@@ -98,3 +98,9 @@ render() {
   );
   }
 }
+
+let mapStateToProps = state => {
+  return { movies: state.movies }
+}
+
+export default connect(mapStateToProps, { setMovies } )(MainView);
