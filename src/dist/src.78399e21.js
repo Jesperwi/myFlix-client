@@ -54130,7 +54130,7 @@ var ProfileView = function ProfileView(_ref) {
         email = currentUser.email,
         birthday = currentUser.birthday;
 
-    _axios.default.put("http://myflixjw.herokuapp.com/users/".concat(user), {
+    _axios.default.put("https://myflixjw.herokuapp.com/users/".concat(user), {
       Username: username,
       Password: password,
       Email: email,
@@ -54339,7 +54339,7 @@ function LoginView(props) {
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
 
-    _axios.default.post('http://myflixjw.herokuapp.com/login', {
+    _axios.default.post('https://myflixjw.herokuapp.com/login', {
       Username: username,
       Password: password
     }).then(function (response) {
@@ -54679,7 +54679,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
     value: function getMovies(token) {
       var _this2 = this;
 
-      _axios.default.get('http://myflixjw.herokuapp.com/movies', {
+      _axios.default.get('https://myflixjw.herokuapp.com/movies', {
         headers: {
           Authorization: "Bearer ".concat(token)
         }
@@ -54990,7 +54990,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49202" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52290" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
