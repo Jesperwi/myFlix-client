@@ -39,7 +39,7 @@ useEffect(() => {
 const handleSubmit = (e) => {
   e.preventDefault();
   const { username, password, email, birthday } = currentUser;
-  axios.put(`http://myflixjw.herokuapp.com/users/${user}`, {
+  axios.put(`https://myflixjw.herokuapp.com/users/${user}`, {
     Username: username,
     Password: password,
     Email: email,
