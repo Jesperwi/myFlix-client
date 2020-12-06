@@ -5,3 +5,30 @@
 .value {
     color: white;
 }
+
+.director-view {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    margin: 1em;
+}
+
+.movie-poster {
+    width: 400px;
+    height: 500px;
+}
+
+.director-name {
+    font-weight: bold;
+    margin: 1em;
+    font-size: 30px;
+}
+
+.director-bio {
+    margin: 1em;
+    margin-bottom: 2em;
+    width: 30%;
+
+}

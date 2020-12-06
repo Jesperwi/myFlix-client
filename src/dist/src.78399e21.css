@@ -1,14 +1,42 @@
+.label {
+  color: white; }
+
+.value {
+  color: white; }
+
+.genre-view {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  margin: 1em; }
+
+.movie-poster {
+  width: 400px;
+  height: 500px; }
+
+.genre-name {
+  font-weight: bold;
+  margin: 1em;
+  font-size: 30px; }
+
+.genre-description {
+  margin: 1em;
+  margin-bottom: 2em;
+  width: 30%; }
+
 .pass {
   background-color: white; }
 
-.profile-info {
-  display: inline-block;
-  font-size: 17px;
-  text-align: left;
+.user-info {
+  display: flex-inline;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: auto; }
+  margin-top: 3em; }
+
+.updateInfo {
+  margin-top: 2em; }
 
 .label {
   color: white; }
@@ -16,14 +44,51 @@
 .value {
   color: white; }
 
+.director-view {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  margin: 1em; }
+
+.movie-poster {
+  width: 400px;
+  height: 500px; }
+
+.director-name {
+  font-weight: bold;
+  margin: 1em;
+  font-size: 30px; }
+
+.director-bio {
+  margin: 1em;
+  margin-bottom: 2em;
+  width: 30%; }
+
 * {
-  box-sizing: border-box;
-  background-color: black; }
+  box-sizing: border-box; }
+
+.login-container {
+  display: flex-inline;
+  width: 100%;
+  height: auto;
+  align-items: center;
+  margin-top: 4em; }
 
 .app-container {
-  display: flex;
+  display: flex-inline;
   width: 100%;
-  height: auto; }
+  height: auto;
+  align-items: center; }
+
+.MyflixLogo {
+  font-family: 'Heebo', sans-serif;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: red;
+  font-size: 100px; }
 
 form {
   display: flex;
@@ -31,20 +96,19 @@ form {
   justify-content: center;
   width: 100%;
   flex-direction: column;
-  padding-top: 7em; }
+  padding-top: 4em; }
 
 .form-label {
   color: white; }
 
 .form-group {
-  width: 30%; }
+  width: 25%; }
 
 .btn.btn-danger {
   font-weight: bold; }
 
 * {
   box-sizing: border-box;
-  background-color: black;
   font-family: 'Montserrat', sans-serif; }
 
 .app-container {
@@ -56,10 +120,12 @@ form {
   display: grid;
   width: 100%;
   grid-template-columns: 0fr 0fr 0fr;
-  justify-content: center; }
+  justify-content: center;
+  height: auto; }
 
 .card {
-  margin: 1em; }
+  margin: 3em;
+  width: 400px; }
 
 .card-body {
   background-color: white; }
@@ -82,58 +148,77 @@ form {
   background-color: #353535;
   font-family: 'Montserrat', sans-serif; }
 
-.movie-view {
+.label {
+  color: white; }
+
+.value {
+  color: white; }
+
+.movie-views {
   display: flex;
   flex-direction: column;
-  color: black;
-  width: 150%;
-  text-align: left;
-  justify-content: space-around; }
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  margin: 1em; }
 
 .movie-poster {
-  display: flex;
-  padding: 0 1em;
-  margin-top: 6em; }
+  width: 400px;
+  height: 500px; }
 
 .movie-title {
-  padding: 5px;
-  font-size: 30px;
   font-weight: bold;
-  color: black; }
+  margin: 1em;
+  font-size: 30px; }
 
 .movie-description {
-  padding: 5px; }
-
-.movie-genre {
-  padding: 5px; }
+  margin: 1em;
+  margin-bottom: 2em;
+  width: 30%; }
 
 .movie-director {
-  padding: 5px;
-  margin-bottom: 1em; }
+  margin-bottom: 2em;
+  width: 30%;
+  text-align: center; }
+
+.movie-genre {
+  text-align: center;
+  margin-bottom: 1em;
+  width: 30%; }
 
 * {
-  font-family: 'Montserrat', sans-serif; }
+  font-family: 'Montserrat', sans-serif;
+  background-color: #0c0c0c; }
 
 .navbar {
   display: flex;
-  justify-content: center;
-  border-bottom: #7e7b7b 1px solid;
-  justify-content: space-between;
-  padding: 0 4em; }
+  flex-direction: row;
+  justify-content: flex-end;
+  padding: 0 4em;
+  background-color: #141414; }
 
 .movie-header {
   text-transform: uppercase;
   font-weight: bold;
   text-align: center;
-  margin-top: 0.5em;
-  text-shadow: #383737 2px 2px 1px;
-  font-size: 50px; }
+  margin-left: 7em;
+  text-shadow: #0a0a0a 2px 1px;
+  font-size: 70px;
+  order: 0;
+  flex-grow: 10;
+  font-family: 'Heebo', sans-serif; }
 
 .profilebutton {
-  margin-top: 2em; }
+  margin: 1.5em;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 23px;
+  color: white;
+  background-color: #141414;
+  border: none; }
 
 .container-movies {
-  width: 100%; }
+  width: 100%;
+  display: flex-inline; }
 
 a:link, a:visited {
   color: red;

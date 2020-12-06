@@ -1,6 +1,5 @@
 * {
     box-sizing: border-box;
-    background-color: black;
     font-family: 'Montserrat', sans-serif;
   }
 
@@ -15,10 +14,13 @@
     width: 100%;
     grid-template-columns: 0fr 0fr 0fr;
     justify-content: center;
+    height: auto;
+
 }    
 
 .card {
-    margin: 1em;
+    margin: 3em;
+    width: 400px;
 }
 
 .card-body {

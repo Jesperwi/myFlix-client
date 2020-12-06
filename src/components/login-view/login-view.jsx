@@ -25,6 +25,8 @@ export function LoginView(props) {
 };
 
   return (
+    <div className="login-container">
+    <h1 className="MyflixLogo">myflix</h1>
     <Form>
   <Form.Group controlId="formBasicUsername">
     <Form.Label>Username:</Form.Label>
@@ -42,5 +44,6 @@ export function LoginView(props) {
     Submit
   </Button>
 </Form>
+</div>
   );
 }

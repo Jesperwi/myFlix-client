@@ -2,12 +2,23 @@
     background-color: white;
 }
 
-.profile-info {
-    display: inline-block;
-    font-size: 17px;
-    text-align: left;
+// .profile-info {
+//     display: inline-block;
+//     font-size: 17px;
+//     text-align: left;
+//     justify-content: center;
+//     align-items: center;
+//     width: 100%;
+//     height: auto;
+// }
+
+.user-info {
+    display: flex-inline;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: auto;
+    margin-top: 3em;
+}
+
+.updateInfo {
+    margin-top: 2em;
 }

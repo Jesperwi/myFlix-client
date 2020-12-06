@@ -61,7 +61,8 @@ const handleChange = (e) => {
 const { username, password, email, birthday, favouriteMovies } = currentUser;
 console.log(favouriteMovies);
 return (
-  <Fragment>
+  <div className="user-info">
+    <Fragment>
     <Form className="profile-info" onSubmit={handleSubmit}>
       <Form.Group controlId="formBasicUsername">
         <Form.Label>Username:</Form.Label>
@@ -83,11 +84,12 @@ return (
         <Form.Control type="birthday" name="birthday" value={birthday} onChange={handleChange} />
       </Form.Group>
 
-      <Button variant="danger" type="submit">
+      <Button className="updateInfo"variant="danger" type="submit">
         Update information
       </Button>
     </Form>
   </Fragment>
+  </div>
   )
 };
 

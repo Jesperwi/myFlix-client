@@ -6,10 +6,10 @@ import Form from 'react-bootstrap/Form';
 
 import { setFilter } from '../../actions/actions';
 
-function VisibilityFilterInput(props) {
+function VisibilityFilterInput(setFilter, visibilityFilter) {
   return <Form.Control
-    onChange={e => props.setFilter(e.target.value)}
-    value={props.visibilityFilter}
+    onChange={e => setFilter(e.target.value)}
+    value={visibilityFilter}
     placeholder="filter"
   />;
 }

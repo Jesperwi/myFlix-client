@@ -72,10 +72,13 @@ render() {
       <Router>
         <nav className="navbar">
         <Link to={`/`} className="movie-header">myFlix</Link>
-        <button onClick={() => this.logout(user)}>Logout</button>
-        <Link to={`/users/${user}`}>
-        <Button className="profilebutton" variant="link" variant="light">Profile</Button>
+        <Link to={`/`}>
+        <Button className="profilebutton" variant="link" variant="dark" >Movies</Button>
         </Link>
+        <Link to={`/users/${user}`}>
+        <Button className="profilebutton" variant="link" variant="dark" >Profile</Button>
+        </Link>
+        <Button className="profilebutton" variant="dark" onClick={() => this.logout(user)}>Logout</Button>
         </nav>
       <Route path="/users/:Username" render={() => <ProfileView user={user} /> }/>
       <div className="main-view">
@@ -84,8 +87,8 @@ render() {
         return movies.map(m => <MovieCard key={m._id} movie={m} />)
         }}/>
         <Route exact path="/movies" render={() => movies.map(m => <MovieCard key={m._id} movie={m}/>)}/>
-        <Route exact path="/movies/:movieId" render={({match}) => (<MovieView movie={movies.find(m => m._id === match.params.movieId)}/>)}/>
       </div>
+      <Route exact path="/movies/:movieId" render={({match}) => (<MovieView movie={movies.find(m => m._id === match.params.movieId)}/>)}/>
       <Route exact path="/directors/:name" render={({ match }) => {
         if (!movies) return <div className="main-view"/>;
           return <DirectorView Director={movies.find(m => m.Director.Name === match.params.name)}/>}
