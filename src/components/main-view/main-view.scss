@@ -15,9 +15,9 @@
     text-transform: uppercase;
     font-weight: bold;
     text-align: center;
-    margin-left: 7em;
+    margin-left: 8em;
     text-shadow: rgb(10, 10, 10) 2px 1px;
-    font-size: 70px;   
+    font-size: 50px;   
     order: 0;
     flex-grow: 10;
     font-family: 'Heebo', sans-serif;
@@ -26,7 +26,7 @@
 .profilebutton {
     margin: 1.5em;
     font-family: 'Montserrat', sans-serif;
-    font-size: 23px;
+    font-size: 17px;
     color: white;
     background-color: rgb(20,20,20);
     border:none
@@ -38,7 +38,7 @@
 }
 
 a:link, a:visited {
-    color:red;
+    color:rgb(240, 61, 61);
     text-align: center;
     text-decoration: none;
     display: inline-block;

@@ -9,17 +9,17 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 20px;
+  font-size: 15px;
   margin: 1em; }
 
 .movie-poster {
-  width: 400px;
-  height: 500px; }
+  width: 300px;
+  height: 400px; }
 
 .genre-name {
   font-weight: bold;
   margin: 1em;
-  font-size: 30px; }
+  font-size: 25px; }
 
 .genre-description {
   margin: 1em;
@@ -49,17 +49,17 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 20px;
+  font-size: 15px;
   margin: 1em; }
 
 .movie-poster {
-  width: 400px;
-  height: 500px; }
+  width: 300px;
+  height: 400px; }
 
 .director-name {
   font-weight: bold;
   margin: 1em;
-  font-size: 30px; }
+  font-size: 25px; }
 
 .director-bio {
   margin: 1em;
@@ -87,7 +87,7 @@
   text-align: center;
   text-transform: uppercase;
   font-weight: bold;
-  color: red;
+  color: #f03d3d;
   font-size: 100px; }
 
 form {
@@ -105,7 +105,8 @@ form {
   width: 25%; }
 
 .btn.btn-danger {
-  font-weight: bold; }
+  font-weight: bold;
+  background-color: #f03d3d; }
 
 * {
   box-sizing: border-box;
@@ -124,7 +125,7 @@ form {
   height: auto; }
 
 .card {
-  margin: 3em;
+  margin: 1.5em;
   width: 400px; }
 
 .card-body {
@@ -159,17 +160,17 @@ form {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 20px;
+  font-size: 15px;
   margin: 1em; }
 
 .movie-poster {
-  width: 400px;
-  height: 500px; }
+  width: 300px;
+  height: 400px; }
 
 .movie-title {
   font-weight: bold;
   margin: 1em;
-  font-size: 30px; }
+  font-size: 25px; }
 
 .movie-description {
   margin: 1em;
@@ -201,9 +202,9 @@ form {
   text-transform: uppercase;
   font-weight: bold;
   text-align: center;
-  margin-left: 7em;
+  margin-left: 8em;
   text-shadow: #0a0a0a 2px 1px;
-  font-size: 70px;
+  font-size: 50px;
   order: 0;
   flex-grow: 10;
   font-family: 'Heebo', sans-serif; }
@@ -211,7 +212,7 @@ form {
 .profilebutton {
   margin: 1.5em;
   font-family: 'Montserrat', sans-serif;
-  font-size: 23px;
+  font-size: 17px;
   color: white;
   background-color: #141414;
   border: none; }
@@ -221,7 +222,7 @@ form {
   display: flex-inline; }
 
 a:link, a:visited {
-  color: red;
+  color: #f03d3d;
   text-align: center;
   text-decoration: none;
   display: inline-block; }
