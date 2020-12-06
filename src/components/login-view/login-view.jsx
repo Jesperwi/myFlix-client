@@ -41,7 +41,7 @@ export function LoginView(props) {
     </Form.Text>
   </Form.Group>
    <Button variant="danger" type="submit" onClick={handleSubmit}>
-    Submit
+    Login
   </Button>
 </Form>
 </div>
