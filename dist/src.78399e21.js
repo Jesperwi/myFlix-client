@@ -54350,7 +54350,6 @@ function LoginView(props) {
     });
   };
 
-  console.log('login', props);
   return _react.default.createElement("div", {
     className: "login-container"
   }, _react.default.createElement("h1", {
@@ -54377,7 +54376,7 @@ function LoginView(props) {
     variant: "danger",
     type: "submit",
     onClick: handleSubmit
-  }, "Login")));
+  }, "Submit")));
 }
 },{"react":"../node_modules/react/index.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","axios":"../node_modules/axios/index.js","./login-view.scss":"components/login-view/login-view.scss"}],"components/movie-card/movie-card.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
@@ -54447,17 +54446,14 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       var movie = this.props.movie;
-      console.log('MovieCard', this.props);
       return _react.default.createElement(_Card.default, {
         style: {
           width: '20rem'
         }
-      }, _react.default.createElement(_reactRouterDom.Link, {
-        to: "/movies/".concat(movie._id)
       }, _react.default.createElement(_Card.default.Img, {
         variant: "top",
         src: movie.ImagePath
-      })), _react.default.createElement(_Card.default.Body, null, _react.default.createElement(_Card.default.Title, null, movie.Title), _react.default.createElement(_Card.default.Text, null, movie.Description), _react.default.createElement(_reactRouterDom.Link, {
+      }), _react.default.createElement(_Card.default.Body, null, _react.default.createElement(_Card.default.Title, null, movie.Title), _react.default.createElement(_Card.default.Text, null, movie.Description), _react.default.createElement(_reactRouterDom.Link, {
         to: "/movies/".concat(movie._id)
       }, _react.default.createElement(_Button.default, _defineProperty({
         className: "danger2",
@@ -54671,6 +54667,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this);
     _this.state = {
+      movies: [],
       user: null
     };
     return _this;
@@ -54687,8 +54684,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
           Authorization: "Bearer ".concat(token)
         }
       }).then(function (response) {
-        console.log('get Movies', _this2.props); // Assign the result to the state
-
+        // Assign the result to the state
         _this2.props.setMovies(response.data);
       }).catch(function (error) {
         console.log(error);
@@ -54697,6 +54693,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "onLoggedIn",
     value: function onLoggedIn(authData) {
+      console.log('loggedin', authData);
       this.setState({
         user: authData.user.Username
       });
@@ -54712,7 +54709,6 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       });
       localStorage.removeItem('token');
       localStorage.removeItem('user');
-      location.reload();
     }
   }, {
     key: "render",
@@ -54838,7 +54834,7 @@ exports.MainView = MainView;
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    movies: state.app.movies
+    movies: state.movies
   };
 };
 
@@ -54853,66 +54849,45 @@ exports.default = _default;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.moviesApp = void 0;
+exports.default = void 0;
 
 var _redux = require("redux");
 
 var _actions = require("../actions/actions");
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var initialState = {
-  movies: [],
-  visibilityFilter: ''
-};
-
-var reducer = function reducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+function visibilityFilter() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {
     case _actions.SET_FILTER:
-      return _extends({}, state, {
-        visibilityFilter: action.value
-      });
-
-    case _actions.SET_MOVIES:
-      return _extends({}, state, {
-        movies: action.value
-      });
+      return action.value;
 
     default:
       return state;
   }
-};
+}
+
+function movies() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _actions.SET_MOVIES:
+      return action.value;
+
+    default:
+      return state;
+  }
+}
 
 var moviesApp = (0, _redux.combineReducers)({
-  app: reducer
+  visibilityFilter: visibilityFilter,
+  movies: movies
 });
-exports.moviesApp = moviesApp;
-},{"redux":"../node_modules/redux/es/redux.js","../actions/actions":"actions/actions.js"}],"../node_modules/redux-devtools-extension/index.js":[function(require,module,exports) {
-"use strict";
-
-var compose = require('redux').compose;
-
-exports.__esModule = true;
-exports.composeWithDevTools = (
-  typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
-    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ :
-    function() {
-      if (arguments.length === 0) return undefined;
-      if (typeof arguments[0] === 'object') return compose;
-      return compose.apply(null, arguments);
-    }
-);
-
-exports.devToolsEnhancer = (
-  typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION__ ?
-    window.__REDUX_DEVTOOLS_EXTENSION__ :
-    function() { return function(noop) { return noop; } }
-);
-
-},{"redux":"../node_modules/redux/es/redux.js"}],"index.scss":[function(require,module,exports) {
+var _default = moviesApp;
+exports.default = _default;
+},{"redux":"../node_modules/redux/es/redux.js","../actions/actions":"actions/actions.js"}],"index.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -54930,9 +54905,7 @@ var _reactRedux = require("react-redux");
 
 var _mainView = _interopRequireDefault(require("./components/main-view/main-view"));
 
-var _reducers = require("./reducers/reducers");
-
-var _reduxDevtoolsExtension = require("redux-devtools-extension");
+var _reducers = _interopRequireDefault(require("../src/reducers/reducers"));
 
 require("../src/index.scss");
 
@@ -54960,7 +54933,7 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-var store = (0, _redux.createStore)(_reducers.moviesApp, (0, _reduxDevtoolsExtension.devToolsEnhancer)()); // Main component (will eventually use all the others)
+var store = (0, _redux.createStore)(_reducers.default); // Main component (will eventually use all the others)
 
 var MyFlixApplication = /*#__PURE__*/function (_React$Component) {
   _inherits(MyFlixApplication, _React$Component);
@@ -54989,7 +54962,7 @@ var MyFlixApplication = /*#__PURE__*/function (_React$Component) {
 var container = document.getElementsByClassName('app-container')[0]; // Tells React to render your app in the root DOM element
 
 _reactDom.default.render(_react.default.createElement(MyFlixApplication), container);
-},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","redux":"../node_modules/redux/es/redux.js","react-redux":"../node_modules/react-redux/es/index.js","./components/main-view/main-view":"components/main-view/main-view.jsx","./reducers/reducers":"reducers/reducers.js","redux-devtools-extension":"../node_modules/redux-devtools-extension/index.js","../src/index.scss":"index.scss"}],"../../../AppData/Roaming/npm/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","redux":"../node_modules/redux/es/redux.js","react-redux":"../node_modules/react-redux/es/index.js","./components/main-view/main-view":"components/main-view/main-view.jsx","../src/reducers/reducers":"reducers/reducers.js","../src/index.scss":"index.scss"}],"../../../AppData/Roaming/npm/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -55017,7 +54990,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63258" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52290" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -20,7 +20,6 @@ export class MainView extends React.Component {
         super();
 
         this.state = {
-          movies: [],
           user: null
         };
       }
@@ -30,6 +29,7 @@ export class MainView extends React.Component {
         headers: { Authorization: `Bearer ${token}`}
       })
       .then(response => {
+        console.log('get Movies', this.props);
         // Assign the result to the state
         this.props.setMovies(response.data);
         })
@@ -39,7 +39,6 @@ export class MainView extends React.Component {
     }
 
 onLoggedIn(authData) {
-  console.log('loggedin', authData);
   this.setState({
     user: authData.user.Username
   });
@@ -56,13 +55,13 @@ logout(authData) {
 
   localStorage.removeItem('token');
   localStorage.removeItem('user');
+  location.reload()
 }
 
 render() {
   let{ movies } = this.props;
   let { user } = this.state;
-  
-  
+
   if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
 
   if (!movies) return <div className="main-view"/>;
@@ -71,39 +70,42 @@ render() {
     <div className="container-movies">
       <Router>
         <nav className="navbar">
-        <Link to={`/`} className="movie-header">myFlix</Link>
-        <Link to={`/`}>
-        <Button className="profilebutton" variant="link" variant="dark" >Movies</Button>
-        </Link>
-        <Link to={`/users/${user}`}>
-        <Button className="profilebutton" variant="link" variant="dark" >Profile</Button>
-        </Link>
-        <Button className="profilebutton" variant="dark" onClick={() => this.logout(user)}>Logout</Button>
+          <Link to={`/`} className="movie-header">myFlix</Link>
+          <Link to={`/`}>
+            <Button className="profilebutton" variant="link" variant="dark" >Movies</Button>
+          </Link>
+          <Link to={`/users/${user}`}>
+            <Button className="profilebutton" variant="link" variant="dark" >Profile</Button>
+          </Link>
+          <Button className="profilebutton" variant="dark" onClick={() => this.logout(user)}>Logout</Button>
         </nav>
       <Route path="/users/:Username" render={() => <ProfileView user={user} /> }/>
-      <div className="main-view">
-        <Route exact path="/" render={() => {
-        if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
-        return movies.map(m => <MovieCard key={m._id} movie={m} />)
-        }}/>
-        <Route exact path="/movies" render={() => movies.map(m => <MovieCard key={m._id} movie={m}/>)}/>
-      </div>
+        <div className="main-view">
+          <Route exact path="/" render={() => {
+            if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+            return movies.map(m => <MovieCard key={m._id} movie={m} />)
+          }}
+          />
+          <Route exact path="/movies" render={() => movies.map(m => <MovieCard key={m._id} movie={m}/>)}/>
+        </div>
       <Route exact path="/movies/:movieId" render={({match}) => (<MovieView movie={movies.find(m => m._id === match.params.movieId)}/>)}/>
       <Route exact path="/directors/:name" render={({ match }) => {
         if (!movies) return <div className="main-view"/>;
-          return <DirectorView Director={movies.find(m => m.Director.Name === match.params.name)}/>}
-        }/>
+          
+        return <DirectorView Director={movies.find(m => m.Director.Name === match.params.name)}/>}
+      }/>
       <Route exact path="/genres/:name" render={({ match }) => {
-      if (!movies) return <div className="main-view"/>;
-      return <GenreView Genre={movies.find(m => m.Genre.Name === match.params.name)}/>}}/>
-      </Router>
-    </div>
-  );
+        if (!movies) return <div className="main-view"/>;
+        
+        return <GenreView Genre={movies.find(m => m.Genre.Name === match.params.name)}/>}
+      }/>
+    </Router>
+  </div>);
   }
 }
 
-let mapStateToProps = state => {
-  return { movies: state.movies }
+const mapStateToProps = state => {
+  return { movies: state.app.movies }
 }
 
 export default connect(mapStateToProps, { setMovies } )(MainView);

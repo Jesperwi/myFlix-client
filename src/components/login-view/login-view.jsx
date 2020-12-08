@@ -23,7 +23,7 @@ export function LoginView(props) {
     console.log('no such user')
   });
 };
-
+  console.log('login', props);
   return (
     <div className="login-container">
     <h1 className="MyflixLogo">myflix</h1>
