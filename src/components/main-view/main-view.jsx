@@ -37,19 +37,6 @@ getMovies(token) {
   });
 }
 
-getUser() {
-  axios.get(`http://myflixjw.herokuapp.com/users/${user}`, {})
-  .then(response => {
-    // Assign the result to the state
-    this.props.setUsers(response.data);
-    })
-  .catch(function (error) {
-    console.log(error);
-  });
-}
-
-
-
 onLoggedIn(authData) {
   this.setState({
     user: authData.user.Username
@@ -72,7 +59,6 @@ logout(authData) {
 
 render() {
   let { movies } = this.props;
-  let { users } = this.props;
   let { user } = this.state;
 
   if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
