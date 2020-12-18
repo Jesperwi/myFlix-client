@@ -24,19 +24,31 @@ export class MainView extends React.Component {
         };
       }
 // this comes in
-    getMovies(token) {
-      axios.get('https://myflixjw.herokuapp.com/movies', {
-        headers: { Authorization: `Bearer ${token}`}
-      })
-      .then(response => {
-        console.log('get Movies', this.props);
-        // Assign the result to the state
-        this.props.setMovies(response.data);
-        })
-      .catch(function (error) {
-        console.log(error);
-      });
-    }
+getMovies(token) {
+  axios.get('https://myflixjw.herokuapp.com/movies', {
+    headers: { Authorization: `Bearer ${token}`}
+  })
+  .then(response => {
+    // Assign the result to the state
+    this.props.setMovies(response.data);
+    })
+  .catch(function (error) {
+    console.log(error);
+  });
+}
+
+getUser() {
+  axios.get(`http://myflixjw.herokuapp.com/users/${user}`, {})
+  .then(response => {
+    // Assign the result to the state
+    this.props.setUsers(response.data);
+    })
+  .catch(function (error) {
+    console.log(error);
+  });
+}
+
+
 
 onLoggedIn(authData) {
   this.setState({
@@ -59,7 +71,8 @@ logout(authData) {
 }
 
 render() {
-  let{ movies } = this.props;
+  let { movies } = this.props;
+  let { users } = this.props;
   let { user } = this.state;
 
   if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
@@ -105,7 +118,7 @@ render() {
 }
 
 const mapStateToProps = state => {
-  return { movies: state.app.movies, user: state.app.users }
+  return { movies: state.app.movies, user: state.app.user }
 }
 
 export default connect(mapStateToProps, { setMovies }, { setUsers } )(MainView);

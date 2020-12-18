@@ -3,8 +3,8 @@ import { SET_FILTER, SET_MOVIES, SET_USERS } from '../actions/actions';
 
 const initialState = {
 	movies: [],
-	users:[],
-	visibilityFilter: '',
+	users: [],
+	visibilityFilter: ''
 
 }
 

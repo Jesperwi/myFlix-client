@@ -4,6 +4,8 @@ import Button from 'react-bootstrap/Button';
 import 'regenerator-runtime/runtime'
 import './profile-view.scss';
 import { Form } from 'react-bootstrap';
+import { setUsers } from '../../actions/actions';
+import { render } from 'sass';
 
 const ProfileView = ({ user, token, props }) =>  {   
   console.log('token', token);
@@ -24,7 +26,6 @@ useEffect(() => {
         headers: { Authorization: `Bearer ${accessToken}`}
         });
         const { Birthday, Email, Password, Username, FavoriteMovies } = result.data;
-        console.log('aa', FavoriteMovies)
         setCurrentUser({
           username: Username,
           password: Password,
@@ -56,11 +57,12 @@ const handleChange = (e) => {
     ...prev,
     [e.target.name]: e.target.value 
   }));
-}
+};
 
-const { username, password, email, birthday, favouriteMovies } = currentUser;
-console.log(favouriteMovies);
-return (
+  
+  const { username, password, email, birthday, favouriteMovies } = currentUser;
+
+  return (
   <div className="user-info">
     <Fragment>
     <Form className="profile-info" onSubmit={handleSubmit}>
@@ -93,5 +95,4 @@ return (
   )
 };
 
-
-export default ProfileView;
+export default (ProfileView);

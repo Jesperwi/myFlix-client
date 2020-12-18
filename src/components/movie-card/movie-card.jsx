@@ -9,7 +9,6 @@ import{ Link } from "react-router-dom";
 export class MovieCard extends React.Component {
   render() {
     const { movie } = this.props;
-    console.log('MovieCard', this.props)
     return (
       <Card style={{ width: '20rem' }}>
         <Link to={`/movies/${movie._id}`}>
@@ -29,7 +28,7 @@ export class MovieCard extends React.Component {
           </Link>
         </Card.Body>
       </Card>
-      );
+    );
   }
 }
 
