@@ -59,7 +59,7 @@ logout(authData) {
 
 render() {
   let { movies } = this.props;
-  let { user } = this.state;
+  let { user } = this.props;
 
   if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
 
