@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, useParams} from "react-router-dom";
 import{ Link } from "react-router-dom";
 import { connect } from 'react-redux';
 
-import { setMovies, setUsers } from '../../actions/actions';
+import { setMovies } from '../../actions/actions';
 import { GenreView } from '../genre-view/genre-view';
 import ProfileView from '../profile-view/profile-view';
 import { DirectorView } from '../director-view/director-view';
@@ -59,8 +59,8 @@ logout(authData) {
 
 render() {
   let { movies } = this.props;
-  let { user } = this.props;
-
+  let { user } = this.state;
+ 
   if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
 
   if (!movies) return <div className="main-view"/>;
@@ -87,14 +87,14 @@ render() {
           />
           <Route exact path="/movies" render={() => movies.map(m => <MovieCard key={m._id} movie={m}/>)}/>
         </div>
-      <Route exact path="/movies/:movieId" render={({match}) => (<MovieView movie={movies.find(m => m._id === match.params.movieId)}/>)}/>
-      <Route exact path="/directors/:name" render={({ match }) => {
-        if (!movies) return <div className="main-view"/>;
+          <Route exact path="/movies/:movieId" render={({match}) => (<MovieView movie={movies.find(m => m._id === match.params.movieId)}/>)}/>
+          <Route exact path="/directors/:name" render={({ match }) => {
+            if (!movies) return <div className="main-view"/>;
           
-        return <DirectorView Director={movies.find(m => m.Director.Name === match.params.name)}/>}
-      }/>
-      <Route exact path="/genres/:name" render={({ match }) => {
-        if (!movies) return <div className="main-view"/>;
+            return <DirectorView Director={movies.find(m => m.Director.Name === match.params.name)}/>}
+            }/>
+            <Route exact path="/genres/:name" render={({ match }) => {
+            if (!movies) return <div className="main-view"/>;
         
         return <GenreView Genre={movies.find(m => m.Genre.Name === match.params.name)}/>}
       }/>
@@ -104,7 +104,7 @@ render() {
 }
 
 const mapStateToProps = state => {
-  return { movies: state.app.movies, user: state.app.user }
+  return { movies: state.app.movies, users: state.app.user }
 }
 
-export default connect(mapStateToProps, { setMovies }, { setUsers } )(MainView);
+export default connect(mapStateToProps, { setMovies })(MainView);

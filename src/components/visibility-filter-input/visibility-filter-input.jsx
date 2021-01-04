@@ -10,7 +10,8 @@ function VisibilityFilterInput(setFilter, visibilityFilter) {
   return <Form.Control
     onChange={e => setFilter(e.target.value)}
     value={visibilityFilter}
-    placeholder="filter"
+    placeholder="Search Movies"
+    className="visiblity-filter"
   />;
 }
 
@@ -18,3 +19,7 @@ export default connect(
   null,
   { setFilter }
 )(VisibilityFilterInput);
+
+VisibilityFilterInput.propTypes = {
+  visibilityFilter: PropTypes.string
+}
