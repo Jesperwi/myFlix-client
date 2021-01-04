@@ -18,8 +18,11 @@ const reducer = (state = initialState , action) => {
 			return {
 				...state,
 				movies: action.value
-			}	
-		}
+			}
+
+		default:
+			return state;
+	}
 }
 
 export const moviesApp = combineReducers({

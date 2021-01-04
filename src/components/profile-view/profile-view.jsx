@@ -5,7 +5,6 @@ import 'regenerator-runtime/runtime'
 import './profile-view.scss';
 import { Form } from 'react-bootstrap';
 import { setUsers } from '../../actions/actions';
-import { render } from 'sass';
 
 const ProfileView = ({ user, token, props }) =>  {   
   console.log('token', token);
