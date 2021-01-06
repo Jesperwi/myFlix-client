@@ -1,20 +1,25 @@
 *{
     font-family: 'Montserrat', sans-serif;
+    background-color: black;
 }
 
 .navbar {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    padding: 0 4em;
+    padding: 0 5em;
     background-color: rgb(20, 20, 20);
+}
+
+.searchBar {
+    color: white;
 }
 
 .movie-header {
     text-transform: uppercase;
     font-weight: bold;
     text-align: center;
-    margin-left: 8em;
+    margin-left: 12.5em;
     text-shadow: rgb(10, 10, 10) 2px 1px;
     font-size: 50px;   
     order: 0;

@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import { SET_FILTER, SET_MOVIES } from '../actions/actions';
+import { SET_FILTER, SET_MOVIES, SET_USER } from '../actions/actions';
 
 const initialState = {
 	movies: [],
-	visibilityFilter: ''
-
+	visibilityFilter: '',
+	user: ''
 }
 
 const reducer = (state = initialState , action) => {
@@ -18,6 +18,11 @@ const reducer = (state = initialState , action) => {
 			return {
 				...state,
 				movies: action.value
+			}
+		case SET_USER:
+			return {
+				...state,
+				user: action.value
 			}
 
 		default:

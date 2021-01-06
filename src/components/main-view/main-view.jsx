@@ -20,7 +20,8 @@ export class MainView extends React.Component {
         super();
 
         this.state = {
-          user: null
+          user: null,
+          searchValue: '' 
         };
       }
 // this comes in
@@ -57,42 +58,68 @@ logout(authData) {
   location.reload()
 }
 
+handleMovieSearch = (e) => {
+   this.setState({ searchValue: e.target.value.trim() })
+}
+
 render() {
+
   let { movies } = this.props;
-  let { user } = this.state;
- 
+
+  let { user, searchValue } = this.state;
+
   if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
 
   if (!movies) return <div className="main-view"/>;
   
+  // const filteredMovies = movies.filter(movie => movie.Title.includes(searchValue)); // Case sensitive
+  const filteredMovies = movies.filter(movie => movie.Title.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase())); // Incase sensitive
+
   return (
     <div className="container-movies">
       <Router>
         <nav className="navbar">
           <Link to={`/`} className="movie-header">myFlix</Link>
           <Link to={`/`}>
+            <input className="searchBar" type="text" placeholder="Search Movies" onChange={this.handleMovieSearch}/>
             <Button className="profilebutton" variant="link" variant="dark" >Movies</Button>
           </Link>
           <Link to={`/users/${user}`}>
             <Button className="profilebutton" variant="link" variant="dark" >Profile</Button>
           </Link>
-          <Button className="profilebutton" variant="dark" onClick={() => this.logout(user)}>Logout</Button>
+            <Button className="profilebutton" variant="dark" onClick={() => this.logout(user)}>Logout</Button>
         </nav>
-      <Route path="/users/:Username" render={() => <ProfileView user={user} /> }/>
+        <Route 
+        path="/users/:Username" 
+        render={() => <ProfileView user={user} /> }/>
         <div className="main-view">
-          <Route exact path="/" render={() => {
-            if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
-            return movies.map(m => <MovieCard key={m._id} movie={m} />)
+          <Route exact 
+          path="/" 
+          render={() => {
+            if (!user)
+            
+            return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+
+            return filteredMovies.map(m => <MovieCard key={m._id} movie={m} />)
           }}
           />
+
           <Route exact path="/movies" render={() => movies.map(m => <MovieCard key={m._id} movie={m}/>)}/>
         </div>
-          <Route exact path="/movies/:movieId" render={({match}) => (<MovieView movie={movies.find(m => m._id === match.params.movieId)}/>)}/>
-          <Route exact path="/directors/:name" render={({ match }) => {
-            if (!movies) return <div className="main-view"/>;
-          
-            return <DirectorView Director={movies.find(m => m.Director.Name === match.params.name)}/>}
-            }/>
+          <Route 
+            exact 
+            path="/movies/:movieId" 
+            render={({match}) => (<MovieView movie={movies.find(m => m._id === match.params.movieId)}/>)}
+          />
+          <Route 
+            exact 
+            path="/directors/:name" 
+            render={({ match }) => {
+              if (!movies) return <div className="main-view"/>;
+            
+              return <DirectorView Director={movies.find(m => m.Director.Name === match.params.name)}/>
+            }}
+          />
             <Route exact path="/genres/:name" render={({ match }) => {
             if (!movies) return <div className="main-view"/>;
         
@@ -104,7 +131,7 @@ render() {
 }
 
 const mapStateToProps = state => {
-  return { movies: state.app.movies, users: state.app.user }
+  return { movies: state.app.movies, user: state.app.user}
 }
 
 export default connect(mapStateToProps, { setMovies })(MainView);
