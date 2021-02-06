@@ -28,10 +28,7 @@
   font-family: "Heebo", sans-serif;
 }
 
-link {
-}
-
-.movie-header link {
+.movie-header:hover link {
   text-decoration: none;
   color: rgb(240, 61, 61);
 }
