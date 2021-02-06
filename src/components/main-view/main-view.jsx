@@ -79,7 +79,7 @@ render() {
     <div className="container-movies">
       <Router>
         <nav className="navbar">
-          <Link to={`/`} className="movie-header">myFlix</Link>
+          <Link to={`/`} style="text-decoration: none" className="movie-header">myFlix</Link>
           <Link to={`/`}>
             <input className="searchBar" type="text" placeholder="Search Movies" onChange={this.handleMovieSearch}/>
             <Button className="profilebutton" variant="link" variant="dark" >Movies</Button>
