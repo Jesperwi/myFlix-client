@@ -1,49 +1,61 @@
-*{
-    font-family: 'Montserrat', sans-serif;
-    background-color: black;
+* {
+  font-family: "Montserrat", sans-serif;
+  background-color: black;
 }
 
 .navbar {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    padding: 0 5em;
-    background-color: rgb(20, 20, 20);
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding: 0 5em;
+  background-color: rgb(20, 20, 20);
 }
 
 .searchBar {
-    color: white;
+  color: white;
 }
 
 .movie-header {
-    text-transform: uppercase;
-    font-weight: bold;
-    text-align: center;
-    margin-left: 12.5em;
-    text-shadow: rgb(10, 10, 10) 2px 1px;
-    font-size: 50px;   
-    order: 0;
-    flex-grow: 10;
-    font-family: 'Heebo', sans-serif;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+  margin-left: 12.5em;
+  text-shadow: rgb(10, 10, 10) 2px 1px;
+  font-size: 50px;
+  text-decoration: none;
+  order: 0;
+  flex-grow: 10;
+  font-family: "Heebo", sans-serif;
+}
+
+.movie-header a:link {
+  text-decoration: none;
+  color: rgb(240, 61, 61);
+}
+
+.movie-header a:visited {
+  text-decoration: none;
+  color: rgb(240, 61, 61);
 }
 
 .profilebutton {
-    margin: 1.5em;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 17px;
-    color: white;
-    background-color: rgb(20,20,20);
-    border:none
+  margin: 1.5em;
+  font-family: "Montserrat", sans-serif;
+  font-size: 17px;
+  color: white;
+  background-color: rgb(20, 20, 20);
+  border: none;
 }
 
 .container-movies {
-    width: 100%;
-    display: flex-inline;
+  width: 100%;
+  display: flex-inline;
 }
 
-a:link, a:visited {
-    color:rgb(240, 61, 61);
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-  }
+a:link,
+a:visited {
+  color: rgb(240, 61, 61);
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}

@@ -31,8 +31,8 @@ getMovies(token) {
   })
   .then(response => {
     // Assign the result to the state
-    this.props.setMovies(response.data);
-    })
+  this.props.setMovies(response.data);
+  })
   .catch(function (error) {
     console.log(error);
   });
