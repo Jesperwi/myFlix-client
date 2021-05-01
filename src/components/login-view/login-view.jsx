@@ -34,7 +34,6 @@ export function LoginView(props) {
     history.push("/register");
   }
 
-  console.log('login', props);
   return (
     <div className="login-container">
     <h1 className="MyflixLogo">myflix</h1>
