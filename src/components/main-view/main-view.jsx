@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button'
-import { BrowserRouter as Router, Route, useParams} from "react-router-dom";
+import { BrowserRouter as Router, Route, useParams, Switch} from "react-router-dom";
 import{ Link } from "react-router-dom";
 import { connect } from 'react-redux';
 
@@ -12,7 +12,7 @@ import { DirectorView } from '../director-view/director-view';
 import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
-// import { RegistrationView } from '../registration-view/registration-view';
+import RegistrationView from '../registration-view/registration-view';
 import './main-view.scss';
 
 export class MainView extends React.Component {
@@ -69,13 +69,15 @@ render() {
   let { user, searchValue } = this.state;
 
   if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
-
+  
   if (!movies) return <div className="main-view"/>;
   
   // const filteredMovies = movies.filter(movie => movie.Title.includes(searchValue)); // Case sensitive
   const filteredMovies = movies.filter(movie => movie.Title.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase())); // Incase sensitive
 
   return (
+
+  
     <div className="container-movies">
       <Router>
         <nav className="navbar">
@@ -103,7 +105,6 @@ render() {
             return filteredMovies.map(m => <MovieCard key={m._id} movie={m} />)
           }}
           />
-
           <Route exact path="/movies" render={() => movies.map(m => <MovieCard key={m._id} movie={m}/>)}/>
         </div>
           <Route 

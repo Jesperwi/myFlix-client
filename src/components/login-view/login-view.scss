@@ -1,51 +1,56 @@
-*{
-    box-sizing: border-box;
+* {
+  box-sizing: border-box;
 }
 
 .login-container {
-    display: flex-inline;
-    width: 100%;
-    height: auto;
-    align-items: center;
-    margin-top: 4em;
+  display: flex-inline;
+  width: 100%;
+  height: auto;
+  align-items: center;
+  margin-top: 4em;
 }
 
 .app-container {
-    display:flex-inline;
-    width: 100%;
-    height: auto;
-    align-items: center;
+  display: flex-inline;
+  width: 100%;
+  height: auto;
+  align-items: center;
 }
 
 .MyflixLogo {
-    font-family: 'Heebo', sans-serif;
-    text-align: center;
-    text-transform: uppercase;
-    font-weight: bold;
-    color:rgb(240, 61, 61);
-    font-size: 100px;
+  font-family: "Heebo", sans-serif;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: rgb(240, 61, 61);
+  font-size: 100px;
 }
 
 form {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    flex-direction: column;
-    padding-top: 4em;
-    
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex-direction: column;
+  padding-top: 4em;
 }
 
 .form-label {
-    color: white;
+  color: white;
 }
 
 .form-group {
-    width: 25%;
+  width: 25%;
 }
 
 .btn.btn-danger {
-    font-weight: bold;
-    background-color:rgb(240, 61, 61);
+  font-weight: bold;
+  background-color: rgb(240, 61, 61);
 }
 
+.regButton {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  margin-top: 1em;
+}

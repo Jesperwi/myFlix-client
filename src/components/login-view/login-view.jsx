@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
+import{ Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { Form } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import axios from 'axios';
 import './login-view.scss';
+import RegistrationView from '../registration-view/registration-view';
 
 export function LoginView(props) {
+
+  const history = useHistory();
+
   const [ username, setUsername ] = useState('');
   const [ password, setPassword ] = useState('');
 
@@ -23,6 +29,11 @@ export function LoginView(props) {
     console.log('no such user')
   });
 };
+
+  const handleRoute = () =>{ 
+    history.push("/register");
+  }
+
   console.log('login', props);
   return (
     <div className="login-container">
@@ -44,6 +55,11 @@ export function LoginView(props) {
     Login
   </Button>
 </Form>
+      <div className='regButton'>
+      <Button variant="danger" type="submit" onClick={handleRoute}>
+      Register
+      </Button>
+      </div>
 </div>
   );
 }
