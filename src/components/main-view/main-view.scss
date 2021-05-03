@@ -9,10 +9,16 @@
   justify-content: flex-end;
   padding: 0 5em;
   background-color: rgb(20, 20, 20);
+  @media only screen and (max-width: 700px) {
+    flex-direction: column;
+    display: inline-block;
+    justify-content: none;
+  }
 }
 
 .searchBar {
-  color: white;
+  color: black;
+  background-color: white;
 }
 
 .movie-header {
@@ -26,6 +32,9 @@
   order: 0;
   flex-grow: 10;
   font-family: "Heebo", sans-serif;
+  @media only screen and (max-width: 700px) {
+    margin-left: 0em;
+  }
 }
 
 .movie-header:hover {
@@ -44,6 +53,11 @@
   color: white;
   background-color: rgb(20, 20, 20);
   border: none;
+  @media only screen and (max-width: 700px) {
+    font-size: 10px;
+    margin: 0em;
+    justify-content: center;
+  }
 }
 
 .container-movies {

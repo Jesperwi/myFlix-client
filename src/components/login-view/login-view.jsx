@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import{ Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { Form } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import axios from 'axios';
 import './login-view.scss';
-import RegistrationView from '../registration-view/registration-view';
 
 export function LoginView(props) {
 
@@ -39,12 +37,12 @@ export function LoginView(props) {
     <h1 className="MyflixLogo">myflix</h1>
     <Form>
   <Form.Group controlId="formBasicUsername">
-    <Form.Label>Username:</Form.Label>
+    <Form.Label for="ex2">Username:</Form.Label>
     <Form.Control type="text" value={username} onChange={e => setUsername(e.target.value)} />
   </Form.Group>
 
   <Form.Group controlId="formBasicPassword">
-    <Form.Label>Password:</Form.Label>
+    <Form.Label for="ex2">Password:</Form.Label>
     <Form.Control type="password" value={password} onChange={e => setPassword(e.target.value)} />
     <Form.Text className="text-muted">
       We'll never share your password with anyone else.

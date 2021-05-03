@@ -4,21 +4,8 @@
   flex-direction: column;
 }
 
-form {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  flex-direction: column;
-  padding-top: 4em;
-}
-
 .form-label {
   color: white;
-}
-
-.form-group {
-  width: 25%;
 }
 
 .btn.btn-danger {

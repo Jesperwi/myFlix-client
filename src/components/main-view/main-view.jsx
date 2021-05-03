@@ -82,8 +82,8 @@ render() {
       <Router>
         <nav className="navbar">
           <Link to={`/`} style={{ textDecoration: 'none' }} className="movie-header">myFlix</Link>
-          <Link to={`/`}>
             <input className="searchBar" type="text" placeholder="Search Movies" onChange={this.handleMovieSearch}/>
+            <Link to={`/`}>
             <Button className="profilebutton" variant="link" variant="dark" >Movies</Button>
           </Link>
           <Link to={`/users/${user}`}>
